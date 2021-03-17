@@ -1,5 +1,5 @@
 const bsv = require('bsv')
-const boomerang = require('boomerang-http')
+const { createEvent } = require('@cwi/busdriver')
 
 module.exports = {
   busdriver: '0.1.1',
@@ -75,6 +75,7 @@ module.exports = {
         collection: 'messages',
         data
       })
+      await createEvent(data)
     } catch (e) {
       console.error(`[!] ${action.tx.h}`)
       console.error(e)
